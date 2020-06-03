@@ -71,6 +71,16 @@ services:
     networks:
       - app-network
 
+  frontend:
+    container_name: frontend
+    build:
+      dockerfile: ./docker/frontend/Dockerfile
+      context: .
+    volumes:
+      - ./:/var/www
+    working_dir: /var/www
+    tty: true
+
 #Docker Networks
 networks:
   app-network:

@@ -1,3 +1,4 @@
+up: docker-up
 init: docker-down-clear docker-build docker-up manager-init
 
 docker-down-clear:
@@ -12,7 +13,7 @@ docker-down:
 docker-build:
 	docker-compose up --build -d
 
-manager-init: manager-copy-env manager-composer-install
+manager-init: manager-copy-env manager-composer-install assets-install assets-dev
 
 manager-copy-env:
 	cp .env.example .env
@@ -24,16 +25,16 @@ test:
 	docker-compose exec app vendor/bin/phpunit
 
 assets-install:
-	docker-compose exec node yarn install
+	docker-compose exec frontend yarn install
 
 assets-rebuild:
-	docker-compose exec node npm rebuild node-sass --force
+	docker-compose exec frontend npm rebuild frontend-sass --force
 
 assets-dev:
-	docker-compose exec node yarn run dev
+	docker-compose exec frontend yarn run dev
 
 assets-watch:
-	docker-compose exec node yarn run watch
+	docker-compose exec frontend yarn run watch
 
 memory:
 	sudo sysctl -w vm.max_map_count=262144

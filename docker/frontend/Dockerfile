@@ -1,7 +1,5 @@
-FROM node:12
+FROM node:14.3.0-alpine
 
 WORKDIR /var/www
 
 COPY package.json /var/www
-
-#CMD ["npm", "install"]
