@@ -23,4 +23,14 @@ class UsersTest extends TestCase
         $this->assertEquals($users[0]->gender , $response['users'][0]->gender);
     }
 
+    public function test_delete_user()
+    {
+        $user = factory(User::class)->create();
+
+        $this->delete('/' . $user->id);
+
+        $this->assertDatabaseMissing('users' , $user->toArray());
+    }
+
+
 }

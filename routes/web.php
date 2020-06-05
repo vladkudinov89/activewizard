@@ -13,4 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'UserController@index');
+Route::get('/', 'UserController@index')->name('users.index');
+Route::get('/{user}', 'UserController@show')->name('users.show');
+Route::delete('/{user}', 'UserController@destroy')->name('users.destroy');

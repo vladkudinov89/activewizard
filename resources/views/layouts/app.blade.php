@@ -47,6 +47,12 @@
     <main class="py-1">
         <div class="container">
 
+            @if(session()->has('status'))
+                <div class="alert alert-success">
+                    {{ session()->get('status') }}
+                </div>
+            @endif
+
             @yield('content')
 
         </div>

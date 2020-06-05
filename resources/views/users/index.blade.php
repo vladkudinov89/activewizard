@@ -28,12 +28,11 @@
 
                             <td>
                                 <a class="float-left btn btn-info mr-2"
-{{--                                   href="{{route('users.edit' , $user)}}">--}}
-                                   href="#">
-                                    Edit
+                                   href="{{route('users.show' , $user)}}">
+                                    Show
                                 </a>
 
-                                <form action="#" method="POST">
+                                <form action="{{route('users.destroy',$user)}}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
 

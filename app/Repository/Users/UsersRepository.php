@@ -13,4 +13,10 @@ class UsersRepository implements UsersRepositoryInterface
         return User::paginate(10);
     }
 
+    public function deleteById(int $id): void
+    {
+        User::destroy($id);
+    }
+
+
 }
