@@ -13,13 +13,16 @@ docker-down:
 docker-build:
 	docker-compose up --build -d
 
-manager-init: manager-copy-env manager-composer-install assets-install assets-dev
+manager-init: manager-copy-env manager-composer-install assets-install assets-dev manager-seed
 
 manager-copy-env:
 	cp .env.example .env
 
 manager-composer-install:
 	docker-compose run --rm app composer install
+
+manager-seed:
+	docker-compose exec app php artisan migrate:fresh --seed
 
 test:
 	docker-compose exec app vendor/bin/phpunit
