@@ -23,3 +23,6 @@ make docker-up
 To stop your containers you have only type next command:
 
 ```make docker-down```
+
+If you want seed db type command:
+```make manager-seed```
